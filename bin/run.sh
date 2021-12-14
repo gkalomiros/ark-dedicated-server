@@ -66,6 +66,13 @@ function main {
       fi
    fi
 
+   useradminlist="${userconfigdir}/AllowedCheaterSteamIDs.txt"
+   liveadminlist="${arkserverroot}/ShooterGame/Saved/AllowedCheaterSteamIDs.txt"
+   if [ -f "$useradminlist" ]; then
+      echo "Installing ${useradminlist}"
+      echo_and_eval "cp $useradminlist $liveadminlist"
+   fi
+
    echo "Configuring cron"
    usercrontab="${userconfigdir}/crontab"
    dfltcrontab="${steamhome}/template/crontab"
